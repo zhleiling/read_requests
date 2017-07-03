@@ -18,10 +18,28 @@ def get(url, params=None, **kwargs):
 * 均返回Response对象
 
 ## 2) 异常类
-* requests.RequestException :模糊异常
+* requests.RequestException :通用异常，继承自IOError， __init__方法中对self.request和self.response赋值。
 * requests.ConnectError: 连接错误
 * requests.HTTPError:Http错误
-* 。。。。
+* ...
+
+其他异常类均直接或间接继承RequestException，或继承包含RequestException在内的多个类，如：
+```
+class Timeout(RequestException):
+    """The request timed out.
+
+    Catching this error will catch both
+    :exc:`~requests.exceptions.ConnectTimeout` and
+    :exc:`~requests.exceptions.ReadTimeout` errors.
+    """
+```
+```
+class ConnectTimeout(ConnectionError, Timeout):
+    """The request timed out while trying to connect to the remote server.
+
+    Requests that produced this error are safe to retry.
+    """
+```
 
 ## 3）Request Sessions
 
