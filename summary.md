@@ -4,9 +4,9 @@ Requests 源码阅读
 
 ## 1) 主要接口
 7个方法：request  (通用，第一个参数为http方法)
-
+```
 requests.request(method, url, **kwargs)
-
+```
 6个常见http方法：head get post put patch delete 
 均返回Response对象
 
