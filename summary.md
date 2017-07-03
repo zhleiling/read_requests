@@ -1,14 +1,21 @@
-Requests 源码阅读
+Requests 源码阅读  
+verison: v2.18.1
 
 # 1 看文档
 
 ## 1) 主要接口
-7个方法：request  (通用，第一个参数为http方法)
+*request  (通用，第一个参数为http方法)
 ```
 requests.request(method, url, **kwargs)
 ```
-6个常见http方法：head get post put patch delete 
-均返回Response对象
+*以get为例 
+```
+def get(url, params=None, **kwargs):
+    kwargs.setdefault('allow_redirects', True)
+    return request('get', url, params=params, **kwargs)
+```
+*其他几个 ：options head post put patch delete  
+*均返回Response对象
 
 ## 2) 异常类
 requests.RequestException :模糊异常
