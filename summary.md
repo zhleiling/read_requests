@@ -4,7 +4,7 @@ verison: v2.18.1
 # 1 看文档
 
 ## 1) 主要接口
-*request  (通用，第一个参数为http方法)
+*request  (通用，第一个参数为http方法)，其他接口方法均通过调用此方法实现
 ```
 requests.request(method, url, **kwargs)
 ```
